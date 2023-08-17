@@ -1,0 +1,1 @@
+Simply open file with your preferred browser!
