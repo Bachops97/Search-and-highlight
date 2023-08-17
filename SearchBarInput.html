@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search and highlight</title>
+    <style>
+        .highlight {
+            background-color: yellow;
+        }
+        #content{
+            margin-top: 20px;
+        }
+        #searchInput{
+            outline: none;
+            min-width: 300px;
+            height: 30px;
+            padding-left: 10px;
+            border-radius: 10px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Search and Highlight</h1>
+    
+    <input oninput="searchAndHighlight()" type="text" id="searchInput" placeholder="Search...">
+    
+    <div id="content">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora dolor ab veritatis quibusdam iste dicta quam a, itaque voluptatem consectetur facere nisi, obcaecati, et quasi sint nam nostrum doloribus corporis.
+    </div>
+    
+    <script>
+        const content = document.getElementById("content");
+        const originalContent = content.innerHTML;
+
+        function searchAndHighlight() {
+            var searchTerm = document.getElementById("searchInput").value;
+            var regex = new RegExp(searchTerm, "gi");
+
+            content.innerHTML = originalContent.replace(regex, function(match) {
+                return '<span class="highlight">' + match + '</span>';
+            });
+        }
+    </script>
+</body>
+</html>
